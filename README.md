@@ -7,7 +7,21 @@
 - Moses Valei
   
 ## Setup instructions
-    - 
+- Clone the repo
+
+```sh 
+https://github.com/Mosesvalei/Application-like-Awwards.git
+  ```
+- Move to the folder and install requirements
+``cd Application-like-Awwards``
+``pip install -r requirements.txt``
+Setup Configurations and Database
+- Running the application
+ ``python3.8 manage.py makemigrations awwards``
+- Testing the application
+python3.8 manage.py runserver
+python3.8 manage.py test
+Open the application on your browser 127.0.0.1:8000
 ​
 ## BDD
 As a user, I would like to:
