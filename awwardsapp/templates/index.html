@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+{{block.super}}
+    <link rel="stylesheet" href="{%   static 'star-ratings/css/star-ratings.css' %}">
+
+<div class="btn1 btn container-fluid" style="background-image: url(https://images.pexels.com/photos/6565250/pexels-photo-6565250.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500); background-repeat: no-repeat; background-size: cover;">
+    <div class="header" style="height: 100vh; font-family: 'Encode Sans Expanded', sans-serif;">
+        <div class="container" style="color:white;">
+            <div class="row" style="padding-top:50px;">
+                <div class="col-md-4">
+                    <strong>Best-voted project</strong> {{date|date:"F d, Y"}}
+                </div>
+                <div class="col-md-4"></div>
+            </div>
+            <div style="text-align:center; font-size: 70px; padding-top:30px; letter-spacing: 1px;">
+                <p>GitHub Search</p>
+            </div>
+            <div style="text-align:center;">
+                <p>By <strong style="color:#49c5b6;">Mosesvalei</strong></p>
+            </div>
+            <div style="height:230px;">
+
+            </div>
+            <div>
+                <div class="col-md-4"></div>
+                <div class="col-md-4">
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="jumbotron">
+    <div class="container-fluid" style="margin-bottom: 10px;  padding-left:55px; padding-right:55px; font-family: 'Raleway', sans-serif;">
+        <div class="" style=" padding-bottom:20px;">
+            <h5><strong>VOTE</strong> For our projects</h5>
+        </div>
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-md-3" style="margin-bottom:25px;">
+                <div id="image" class="hover02 column body">
+                    <figure><a target="blank" href="{%url 'vote' post_id=post.id%}"><img class="img-responsive" src="{{post.image.url }}"
+                                width="100%" ; height="200px" ;></a></figure>
+                </div>
+                <div class="card-header" style="background-color:white; font-size: 13px; margin-top:0px;">
+                    <p><strong>{{post.sitename}}</strong></p>
+                    <p class="size">From {{post.country}} &nbsp; {{post.post_date}}</p>
+
+                    {% load ratings %}
+                    {% ratings post %}
+                
+                    <div class="text2">
+                        <a target="blank" href="{{post.url}}" style="color:black; text-decoration:none;"><strong>Visit</strong>
+                        </a>
+                    </div>
+                </div>
+                <div class="card-footer" style="background-color:white;">
+                    <p>By <strong>{{post.user}}</strong></p>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+{% for post in posts %}
+
+{% endfor %}
+
+{% endblock %}
